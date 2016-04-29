@@ -22,6 +22,7 @@ executable ggxtool
   build-depends:       base >=4.8 && <4.9,
                        text,
                        containers,
+                       mtl,
                        xml-conduit,
                        xml-lens,
                        pretty,

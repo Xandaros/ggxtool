@@ -2,9 +2,10 @@
 module Main where
 
 import Prelude hiding (readFile, writeFile)
+import Control.Monad (when)
 import System.Console.GetOpt
 import System.Environment (getArgs)
-import System.Exit (exitFailure)
+import System.Exit (exitFailure, exitSuccess)
 
 import Types
 import qualified Transform
@@ -26,6 +27,10 @@ parseArgs args = case getOpt Permute options args of
 main :: IO ()
 main = do
     (flags, nonOpts) <- getArgs >>= parseArgs
+
+    when (Help `elem` flags) $ do
+        putStrLn usageInfo'
+        exitSuccess
 
     case nonOpts of
       ("list":file:_) -> Transform.list file flags

@@ -5,3 +5,4 @@ data Flag = All
           | Help
           | GraphID String
           | GraphName String
+          deriving (Eq)
